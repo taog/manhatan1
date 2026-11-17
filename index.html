@@ -22,5 +22,5 @@ async function derive(pw){const bk=await crypto.subtle.importKey('raw',new TextE
 document.getElementById('f').onsubmit=async e=>{e.preventDefault();const E=document.getElementById('e'),B=document.getElementById('b');
  E.textContent='';B.textContent='Sprawdzam…';B.disabled=true;
  try{await open_(await derive(document.getElementById('p').value));}catch(x){E.textContent='Nieprawidłowe hasło';B.textContent='Otwórz';B.disabled=false;}};
-const s=sessionStorage.getItem('mk');if(s)open_(b64(s)).catch(()=>sessionStorage.removeItem('mk'));
+const s=sessionStorage.getItem('mk');if(s)addEventListener('load',()=>open_(b64(s)).catch(()=>sessionStorage.removeItem('mk')));
 </script></body></html>
